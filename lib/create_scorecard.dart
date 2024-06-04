@@ -17,6 +17,11 @@ class CreateScorecard extends StatelessWidget {
                 children: [
                   TextFormField(
                     decoration: const InputDecoration(
+                      hintText: 'How many people are playing?',
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: const InputDecoration(
                       hintText: 'Enter your email',
                     ),
                   )

@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'ParPal',
         theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
-        home: Container(decoration: gradientGreen, child: const Home()));
+        home: Container(decoration: gradientGreen, child: const Home())
+        );
   }
 }

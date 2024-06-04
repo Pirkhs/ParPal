@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:parpal/create_scorecard.dart';
+import 'package:parpal/scorecard.dart';
 
 var appBarTitleDecoration = RichText(
     text: const TextSpan(
@@ -32,11 +33,11 @@ class Home extends StatelessWidget {
                   margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                   child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => const CreateScorecard()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Scorecard()),
+                        );
                       },
                       child: Text("Start a New Game", style: buttonTextStyle))),
               Container(
