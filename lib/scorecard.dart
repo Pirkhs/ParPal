@@ -57,7 +57,7 @@ class _ScorecardState extends State<Scorecard> {
                       Text("$i", textAlign: TextAlign.center),
                       
                       for (int j = 0; j < players; j++)
-                        const InputBox(isText: false, hint: "Score"),
+                        const InputBox(isText: false),
             
                       // const SizedBox.shrink(),
                       const SizedBox.shrink()
