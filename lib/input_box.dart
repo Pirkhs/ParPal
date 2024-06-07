@@ -10,9 +10,12 @@ class InputBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       keyboardType: isText? TextInputType.text : TextInputType.number,  
+      textAlign: TextAlign.center,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         hintText: hint,
+        isDense: true,
+        contentPadding: const EdgeInsets.all(0),
       )
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:parpal/create_scorecard.dart';
 import 'package:parpal/scorecard.dart';
+import 'package:parpal/styled_btn.dart';
 
 var appBarTitleDecoration = RichText(
     text: const TextSpan(
@@ -12,7 +12,7 @@ var appBarTitleDecoration = RichText(
   ],
 ));
 
-var buttonTextStyle = const TextStyle(fontWeight: FontWeight.w900);
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
                 children: [
               Container(
                   margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                  child: ElevatedButton(
+                  child: StyledButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -39,13 +39,12 @@ class Home extends StatelessWidget {
                               builder: (context) => const Scorecard()),
                         );
                       },
-                      child: Text("Start a New Game", style: buttonTextStyle))),
+                      text: "Start New Game"
+                  )
+              ),
               Container(
                 margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child:
-                        Text("View Saved Scorecards", style: buttonTextStyle)),
+                child: StyledButton(onPressed: () {}, text: "View Saved Scorecards")
               )
             ])));
   }

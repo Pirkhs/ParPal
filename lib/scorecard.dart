@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:parpal/input_box.dart';
+import 'package:parpal/styled_btn.dart';
+
+const scorecardTextStyle = TextStyle(color: Colors.black);
 
 class Scorecard extends StatefulWidget {
   const Scorecard({super.key});
@@ -25,33 +28,46 @@ class _ScorecardState extends State<Scorecard> {
       appBar: AppBar(
         title: const Text("Scorecard")
       ),
-      body: Table(
-        border: TableBorder.all(width: 1),
+      body: Column(
         children: [
-          TableRow(
-            children: [
-              const Text("Hole"),
-              for (int i = 0; i < players; i++)
-                const InputBox(isText: true, hint: "Name"),
-              TextButton(
-                onPressed: incrementPlayers,
-                child: const Text("+ Player")
-              )
-            ],
-          ),
-          for (int i = 0; i < holes; i++)
-            TableRow(
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: Table(
+              border: TableBorder.all(width: 1),
               children: [
-                Text("$i"),
+                TableRow(
+                  children: [
+                    const Text("Hole", textAlign: TextAlign.center),
+                    for (int i = 0; i < players; i++)
+                      const InputBox(isText: true, hint: "Name"),
+                    TextButton(
+                      onPressed: incrementPlayers,
+                      child: const Text("+ Player", textAlign: TextAlign.center)
+                    )
+                  ],
+                ),
 
-                for (int j = 0; j < players; j++)
-                  const InputBox(isText: false, hint: "Score"),
-
-                const Text("d", style: TextStyle(backgroundColor: Colors.red))
+                for (int i = 0; i < holes + 1; i++)
+                  TableRow(
+                    children: [
+                      Text("$i", textAlign: TextAlign.center),
+            
+                      for (int j = 0; j < players; j++)
+                        const InputBox(isText: false, hint: "Score"),
+            
+                      // const SizedBox.shrink(),
+                      Container (
+                        color: Colors.red,
+                        child: const Text("")
+                      )
+                    ]
+                  ),
+                  
               ]
             ),
-            
-        ]
+          ),
+          StyledButton(onPressed: () {}, text: "End Game"),
+        ],
       )
     );
   }
