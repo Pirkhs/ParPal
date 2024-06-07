@@ -12,6 +12,7 @@ class InputBox extends StatelessWidget {
       keyboardType: isText? TextInputType.text : TextInputType.number,  
       textAlign: TextAlign.center,
       decoration: InputDecoration(
+        border: InputBorder.none,
         hintText: hint,
         isDense: true,
         contentPadding: const EdgeInsets.all(0),
