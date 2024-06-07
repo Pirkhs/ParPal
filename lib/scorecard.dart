@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parpal/input_box.dart';
+import 'package:parpal/podium.dart';
 import 'package:parpal/styled_btn.dart';
 
 const scorecardTextStyle = TextStyle(color: Colors.black);
@@ -37,8 +38,9 @@ class _ScorecardState extends State<Scorecard> {
               border: TableBorder.all(width: 1),
               children: [
                 TableRow(
+                  decoration: BoxDecoration(color: Colors.grey[200]),
                   children: [
-                    const Text("Hole", textAlign: TextAlign.center),
+                    const Text("Hole", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w900)),
                     for (int i = 0; i < players; i++)
                       const InputBox(isText: true, hint: "Name"),
                     TextButton(
@@ -50,24 +52,28 @@ class _ScorecardState extends State<Scorecard> {
 
                 for (int i = 0; i < holes + 1; i++)
                   TableRow(
+                    decoration: i % 2 == 1 ? BoxDecoration(color: Colors.grey[200]) : null,
                     children: [
                       Text("$i", textAlign: TextAlign.center),
-            
+                      
                       for (int j = 0; j < players; j++)
                         const InputBox(isText: false, hint: "Score"),
             
                       // const SizedBox.shrink(),
-                      Container (
-                        color: Colors.grey,
-                        child: const Text("")
-                      )
+                      const SizedBox.shrink()
                     ]
                   ),
                   
               ]
             ),
           ),
-          StyledButton(onPressed: () {}, text: "End Game"),
+          StyledButton(onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Podium()),
+                        );
+                      }, text: "End Game"),
         ],
       )
       )
