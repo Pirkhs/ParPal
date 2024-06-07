@@ -28,7 +28,8 @@ class _ScorecardState extends State<Scorecard> {
       appBar: AppBar(
         title: const Text("Scorecard")
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: [
           Container(
             margin: const EdgeInsets.all(10),
@@ -57,7 +58,7 @@ class _ScorecardState extends State<Scorecard> {
             
                       // const SizedBox.shrink(),
                       Container (
-                        color: Colors.red,
+                        color: Colors.grey,
                         child: const Text("")
                       )
                     ]
@@ -68,6 +69,7 @@ class _ScorecardState extends State<Scorecard> {
           ),
           StyledButton(onPressed: () {}, text: "End Game"),
         ],
+      )
       )
     );
   }
