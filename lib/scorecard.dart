@@ -14,6 +14,11 @@ class Scorecard extends StatefulWidget {
 
 class _ScorecardState extends State<Scorecard> {
 
+  String name = "";
+  List scores = [];
+
+  final _formGlobalKey = GlobalKey<FormState>();
+
   int players = 1;
   int holes = 18;
 
@@ -34,46 +39,53 @@ class _ScorecardState extends State<Scorecard> {
         children: [
           Container(
             margin: const EdgeInsets.all(10),
-            child: Table(
-              border: TableBorder.all(width: 1),
-              children: [
-                TableRow(
-                  decoration: BoxDecoration(color: Colors.grey[200]),
-                  children: [
-                    const Text("Hole", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w900)),
-                    for (int i = 0; i < players; i++)
-                      const InputBox(isText: true, hint: "Name"),
-                    TextButton(
-                      onPressed: incrementPlayers,
-                      child: const Text("+ Player", textAlign: TextAlign.center)
-                    )
-                  ],
-                ),
-
-                for (int i = 0; i < holes + 1; i++)
+            child: Form(
+              key: _formGlobalKey,
+              child: Table(
+                border: TableBorder.all(width: 1),
+                children: [
                   TableRow(
-                    decoration: i % 2 == 1 ? BoxDecoration(color: Colors.grey[200]) : null,
+                    decoration: BoxDecoration(color: Colors.grey[200]),
                     children: [
-                      Text("$i", textAlign: TextAlign.center),
-                      
-                      for (int j = 0; j < players; j++)
-                        const InputBox(isText: false),
-            
-                      // const SizedBox.shrink(),
-                      const SizedBox.shrink()
-                    ]
+                      const Text("Hole", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w900)),
+                      for (int i = 0; i < players; i++)
+                        InputBox(isText: true, hint: "Name", onSaved: (value) {name = value!;} ),
+                      TextButton(
+                        onPressed: incrementPlayers,
+                        child: const Text("+ Player", textAlign: TextAlign.center)
+                      )
+                    ],
                   ),
-                  
-              ]
+              
+                  for (int i = 0; i < holes + 1; i++)
+                    TableRow(
+                      decoration: i % 2 == 1 ? BoxDecoration(color: Colors.grey[200]) : null,
+                      children: [
+                        Text("$i", textAlign: TextAlign.center),
+                        
+                        for (int j = 0; j < players; j++)
+                          InputBox(isText: false, onSaved: (value) {}),
+              
+                        const SizedBox.shrink()
+                      ]
+                    ),
+                    
+                ]
+              ),
             ),
           ),
           StyledButton(onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Podium()),
-                        );
-                      }, text: "End Game"),
+            if (_formGlobalKey.currentState!.validate()) {
+
+               _formGlobalKey.currentState!.save();
+
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const Podium()),
+              );
+            }
+            }, text: "End Game"),
         ],
       )
       )
