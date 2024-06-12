@@ -5,6 +5,8 @@ import 'package:parpal/styled_btn.dart';
 
 const scorecardTextStyle = TextStyle(color: Colors.black);
 
+class Scores {}
+
 class Scorecard extends StatefulWidget {
   const Scorecard({super.key});
 
@@ -14,8 +16,7 @@ class Scorecard extends StatefulWidget {
 
 class _ScorecardState extends State<Scorecard> {
 
-  String name = "";
-  List scores = [];
+  List playerNames = [];
 
   final _formGlobalKey = GlobalKey<FormState>();
 
@@ -49,7 +50,7 @@ class _ScorecardState extends State<Scorecard> {
                     children: [
                       const Text("Hole", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w900)),
                       for (int i = 0; i < players; i++)
-                        InputBox(isText: true, hint: "Name", onSaved: (value) {name = value!;} ),
+                        InputBox(initialValue: "Nathan", isText: true, hint: "Name", onSaved: (value) {playerNames.add(value!);} ),
                       TextButton(
                         onPressed: incrementPlayers,
                         child: const Text("+ Player", textAlign: TextAlign.center)
@@ -64,7 +65,9 @@ class _ScorecardState extends State<Scorecard> {
                         Text("$i", textAlign: TextAlign.center),
                         
                         for (int j = 0; j < players; j++)
-                          InputBox(isText: false, onSaved: (value) {}),
+                          InputBox(initialValue: "1",  isText: false, onSaved: (value) {
+                            // print("player${j+1} hole${i}: ${value}");
+                            }),
               
                         const SizedBox.shrink()
                       ]
@@ -75,14 +78,20 @@ class _ScorecardState extends State<Scorecard> {
             ),
           ),
           StyledButton(onPressed: () {
+            
             if (_formGlobalKey.currentState!.validate()) {
 
-               _formGlobalKey.currentState!.save();
+              _formGlobalKey.currentState!.save();
 
-                Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const Podium()),
+              for (var i = 0; i < players; i++){
+                print(playerNames[i]);
+                Scores.name = "Nathan";
+              }
+
+              Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Podium()),
               );
             }
             }, text: "End Game"),
@@ -92,3 +101,12 @@ class _ScorecardState extends State<Scorecard> {
     );
   }
 }
+
+/*
+
+const scores = {
+  Nathan: [],
+  Joe: [],
+}
+
+*/

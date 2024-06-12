@@ -4,15 +4,13 @@ import 'package:parpal/styled_btn.dart';
 
 var appBarTitleDecoration = RichText(
     text: const TextSpan(
-  style: TextStyle(fontSize: 40),
-  children: <TextSpan>[
-    TextSpan(text: "Par", style: TextStyle(color: Colors.green)),
-    TextSpan(text: "Pal ", style: TextStyle(color: Colors.black)),
-    TextSpan(text: "⛳")
-  ],
+      style: TextStyle(fontSize: 40),
+      children: [
+        TextSpan(text: "Par", style: TextStyle(color: Colors.green)),
+        TextSpan(text: "Pal ", style: TextStyle(color: Colors.black)),
+        WidgetSpan( child: Icon(Icons.golf_course, size: 50, semanticLabel: "Black golf course icon",)),
+      ],
 ));
-
-
 
 class Home extends StatelessWidget {
   const Home({super.key});

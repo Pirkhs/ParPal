@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class InputBox extends StatelessWidget {
-  const InputBox({super.key, required this.isText, this.hint = "", required this.onSaved});
+  const InputBox({super.key, required this.isText, this.hint = "", required this.onSaved, this.initialValue = ""});
 
   final bool isText;
   final String hint;
   final void Function(String?) onSaved;
-
+  final String initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,7 @@ class InputBox extends StatelessWidget {
         isDense: true,
         contentPadding: const EdgeInsets.all(0),
       ),
+      initialValue: initialValue,
       validator: (value) {
         if (value == null || value.isEmpty) return 'Required';
         return null;
