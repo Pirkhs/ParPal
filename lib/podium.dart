@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:parpal/styled_btn.dart';
 
 class Podium extends StatelessWidget {
-  const Podium({super.key});
+  const Podium({super.key, required this.playerNames, required this.allScores, required this.holeCount});
+
+  final List playerNames;
+  final List allScores;
+  final int holeCount;
 
   @override
   Widget build(BuildContext context) {
+    int playerCount = playerNames.length;
+
+
+    for (int i = 1; i <= playerCount; i++){
+      print(allScores.sublist((i - 1) * holeCount, (i * holeCount)));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Podium"),

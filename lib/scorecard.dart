@@ -5,8 +5,6 @@ import 'package:parpal/styled_btn.dart';
 
 const scorecardTextStyle = TextStyle(color: Colors.black);
 
-class Scores {}
-
 class Scorecard extends StatefulWidget {
   const Scorecard({super.key});
 
@@ -16,16 +14,17 @@ class Scorecard extends StatefulWidget {
 
 class _ScorecardState extends State<Scorecard> {
 
-  List playerNames = [];
 
   final _formGlobalKey = GlobalKey<FormState>();
 
-  int players = 1;
-  int holes = 18;
+  int playerCount = 1;
+  int holeCount = 18;
+  List playerNames = [];
+  List allScores = [];
 
   void incrementPlayers() {
     setState(() {
-      players = players + 1;
+      playerCount = playerCount + 1;
     });
   }
 
@@ -49,7 +48,7 @@ class _ScorecardState extends State<Scorecard> {
                     decoration: BoxDecoration(color: Colors.grey[200]),
                     children: [
                       const Text("Hole", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.w900)),
-                      for (int i = 0; i < players; i++)
+                      for (int i = 0; i < playerCount; i++)
                         InputBox(initialValue: "Nathan", isText: true, hint: "Name", onSaved: (value) {playerNames.add(value!);} ),
                       TextButton(
                         onPressed: incrementPlayers,
@@ -58,21 +57,18 @@ class _ScorecardState extends State<Scorecard> {
                     ],
                   ),
               
-                  for (int i = 0; i < holes + 1; i++)
+                  for (int i = 1; i <= holeCount; i++)
                     TableRow(
-                      decoration: i % 2 == 1 ? BoxDecoration(color: Colors.grey[200]) : null,
+                      decoration: i % 2 == 0 ? BoxDecoration(color: Colors.grey[200]) : null,
                       children: [
                         Text("$i", textAlign: TextAlign.center),
                         
-                        for (int j = 0; j < players; j++)
-                          InputBox(initialValue: "1",  isText: false, onSaved: (value) {
-                            // print("player${j+1} hole${i}: ${value}");
-                            }),
+                        for (int j = 1; j <= playerCount; j++)
+                          InputBox(initialValue: "1",  isText: false, onSaved: (value) { allScores.add(value); }),
               
                         const SizedBox.shrink()
                       ]
-                    ),
-                    
+                    ),                   
                 ]
               ),
             ),
@@ -83,15 +79,10 @@ class _ScorecardState extends State<Scorecard> {
 
               _formGlobalKey.currentState!.save();
 
-              for (var i = 0; i < players; i++){
-                print(playerNames[i]);
-                Scores.name = "Nathan";
-              }
-
               Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const Podium()),
+                  builder: (context) => Podium(playerNames: playerNames, allScores: allScores, holeCount: holeCount)),
               );
             }
             }, text: "End Game"),
