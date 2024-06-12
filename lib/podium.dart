@@ -11,10 +11,14 @@ class Podium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int playerCount = playerNames.length;
-
+    String leastStroke = playerNames[0];
+    String highestStroke = playerNames[0];
+    String leastConsistent = playerNames[0];
+    String mostConsistent = playerNames[0];
+    String mostHolesInOne = playerNames[0];
 
     for (int i = 1; i <= playerCount; i++){
-      print(allScores.sublist((i - 1) * holeCount, (i * holeCount)));
+      List currScores = allScores.sublist((i - 1) * holeCount, (i * holeCount));
     }
 
     return Scaffold(
@@ -76,14 +80,14 @@ class Podium extends StatelessWidget {
               ),
             ),
 
-            const Column (
+            Column (
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Lowest Score: _____ "),
-                Text("Highest Score: _____ "),
-                Text("Least Consistent: _____ "),
-                Text("Most Consistent: _____ "),
-                Text("Most Holes In One: _____ "),
+                Text("Lowest Stroke: $leastStroke "),
+                Text("Highest Stroke: $highestStroke"),
+                Text("Least Consistent: $leastConsistent"),
+                Text("Most Consistent: $mostConsistent"),
+                Text("Most Holes In One: $mostHolesInOne"),
               ]
             ),
 
