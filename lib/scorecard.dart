@@ -79,10 +79,12 @@ class _ScorecardState extends State<Scorecard> {
 
               _formGlobalKey.currentState!.save();
 
+              List allScoresNums = allScores.map((score) => int.parse(score)).toList();
+
               Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Podium(playerNames: playerNames, allScores: allScores, holeCount: holeCount)),
+                  builder: (context) => Podium(playerNames: playerNames, allScores: allScoresNums, holeCount: holeCount)),
               );
             }
             }, text: "End Game"),

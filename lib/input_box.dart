@@ -22,6 +22,10 @@ class InputBox extends StatelessWidget {
       initialValue: initialValue,
       validator: (value) {
         if (value == null || value.isEmpty) return 'Required';
+        if (!isText) {
+          if (int.tryParse(value) == null) return 'Integer';
+        }
+
         return null;
       },
       onSaved: onSaved,
