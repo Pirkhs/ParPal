@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class InputBox extends StatelessWidget {
   const InputBox({super.key, required this.isText, this.hint = "", required this.onSaved, this.initialValue = ""});
@@ -12,6 +13,7 @@ class InputBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: isText? TextInputType.text : TextInputType.number,  
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         border: InputBorder.none,
