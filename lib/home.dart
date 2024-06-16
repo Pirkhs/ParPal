@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parpal/saved_scorecards.dart';
 import 'package:parpal/scorecard.dart';
 import 'package:parpal/styled_btn.dart';
 
@@ -28,7 +29,7 @@ class Home extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
               Container(
-                  margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                  margin: const EdgeInsets.all(10),
                   child: StyledButton(
                       onPressed: () {
                         Navigator.push(
@@ -41,8 +42,14 @@ class Home extends StatelessWidget {
                   )
               ),
               Container(
-                margin: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                child: StyledButton(onPressed: () {}, text: "View Saved Scorecards")
+                margin: const EdgeInsets.all(10),
+                child: StyledButton(onPressed: () {
+                  Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SavedScorecards()),
+                        );
+                }, text: "View Saved Scorecards")
               )
             ])));
   }

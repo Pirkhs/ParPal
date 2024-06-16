@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parpal/home.dart';
 
-const gradientGreen = BoxDecoration(
-    gradient: LinearGradient(colors: [Colors.green, Colors.lightGreenAccent]));
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,8 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'ParPal',
-        theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
-        home: Container(decoration: gradientGreen, child: const Home())
+        theme: ThemeData(scaffoldBackgroundColor: Colors.green),
+        home: const Home()
         );
   }
 }

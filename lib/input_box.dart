@@ -12,8 +12,9 @@ class InputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: isText? TextInputType.text : TextInputType.number,  
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+      keyboardType: isText ? TextInputType.text : TextInputType.number,  
+      inputFormatters: isText ? null : [FilteringTextInputFormatter.digitsOnly],
+      maxLines: null,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         border: InputBorder.none,
