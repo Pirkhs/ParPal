@@ -82,7 +82,7 @@ class _ScorecardState extends State<Scorecard> {
                   _formGlobalKey.currentState!.save();
                       
                   List allScoresNums = allScores.map((score) => int.parse(score)).toList();
-                      
+
                   Navigator.push(
                   context,
                   MaterialPageRoute(

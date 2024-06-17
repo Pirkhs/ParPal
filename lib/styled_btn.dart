@@ -12,6 +12,7 @@ class StyledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(10)),
       onPressed: onPressed,
       child:
           Text(text, style: buttonTextStyle));

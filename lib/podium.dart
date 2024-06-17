@@ -16,6 +16,12 @@ class Podium extends StatelessWidget {
   Widget build(BuildContext context) {
     int playerCount = playerNames.length;
 
+    String thirdPlace = "N/A";
+    String secondPlace = "N/A";
+    String firstPlace = "N/A";
+
+    List totals = [];
+
     String leastStrokePlayers = "";
     String highestStrokePlayers = "";
     String leastConsistentPlayers = "";
@@ -34,9 +40,16 @@ class Podium extends StatelessWidget {
           : players;
     }
 
+    int add (a, b) {
+      return a + b;
+    }
+
     for (int i = 1; i <= playerCount; i++) {
       List currScores = allScores.sublist((i - 1) * holeCount, (i * holeCount));
       currScores.sort();
+
+      int currTotal = currScores.reduce((a, b) => add(a,b));
+      totals.add("${playerNames[i - 1]}:$currTotal");
 
       int currLeastStroke = currScores[0];
       leastStrokePlayers =
@@ -81,6 +94,12 @@ class Podium extends StatelessWidget {
       }
     }
 
+    totals.sort((a,b) => a.split(":")[1].compareTo(b.split(":")[1]));
+
+    firstPlace = totals.isNotEmpty ? totals[0] : firstPlace;
+    secondPlace = totals.length >= 2 ? totals[1] : secondPlace;
+    thirdPlace = totals.length >= 3 ? totals[2] : thirdPlace;
+    
     return Scaffold(
         appBar: AppBar(
           title: const Text("Podium"),
@@ -103,7 +122,7 @@ class Podium extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Column(children: [
-                    const Text("3rd Place"),
+                    Text(thirdPlace),
                     Container(
                       width: 90,
                       height: 40,
@@ -114,7 +133,7 @@ class Podium extends StatelessWidget {
                   ]),
                   Column(
                     children: [
-                      const Text("1st Place"),
+                      Text(firstPlace),
                       Container(
                         width: 90,
                         height: 100,
@@ -126,7 +145,7 @@ class Podium extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      const Text("2nd Place"),
+                      Text(secondPlace),
                       Container(
                         width: 90,
                         height: 70,
@@ -138,6 +157,10 @@ class Podium extends StatelessWidget {
                   )
                 ]),
           ),
+          if (playerCount > 3) 
+            for (int i = 4; i <= playerCount; i++)
+              Center(child: Text("${i}th: ${totals[i - 1]}")),
+
           Container(
             margin: const EdgeInsets.all(10),
             child: Table(border: TableBorder.all(width: 1), children: [
