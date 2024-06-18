@@ -9,7 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'ParPal',
-        theme: ThemeData(scaffoldBackgroundColor: Colors.green),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.green,
+          appBarTheme: const AppBarTheme(
+            color: Colors.white,
+          )
+          ),
         home: const Home()
         );
   }

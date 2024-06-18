@@ -108,7 +108,7 @@ class Podium extends StatelessWidget {
         bottomNavigationBar:       
         SafeArea(
           child: BottomAppBar(
-              color: Colors.white,
+              color: Colors.transparent,
               elevation: 0,
               child: StyledButton(onPressed: () {Navigator.popUntil(context, ModalRoute.withName('/'));}, text: "Return Home")
             ),
@@ -121,39 +121,45 @@ class Podium extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Column(children: [
-                    Text(thirdPlace),
-                    Container(
-                      width: 90,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        color: Colors.brown,
-                      ),
-                    ),
-                  ]),
-                  Column(
-                    children: [
-                      Text(firstPlace),
+                  Expanded(
+                    flex: 2,
+                    child: Column(children: [
+                      Text(thirdPlace),
                       Container(
-                        width: 90,
-                        height: 100,
+                        height: 40,
                         decoration: const BoxDecoration(
-                          color: Colors.amberAccent,
+                          color: Colors.brown,
                         ),
                       ),
-                    ],
+                    ]),
                   ),
-                  Column(
-                    children: [
-                      Text(secondPlace),
-                      Container(
-                        width: 90,
-                        height: 70,
-                        decoration: const BoxDecoration(
-                          color: Colors.grey,
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        Text(firstPlace),
+                        Container(
+                          height: 100,
+                          decoration: const BoxDecoration(
+                            color: Colors.amberAccent,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: [
+                        Text(secondPlace),
+                        Container(
+                          height: 70,
+                          decoration: const BoxDecoration(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   )
                 ]),
           ),
