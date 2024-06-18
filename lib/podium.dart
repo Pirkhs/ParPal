@@ -218,7 +218,10 @@ class Podium extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.all(10),
-            child: StyledButton(onPressed: () {}, text: "Save Scorecard")),
+            child: StyledButton(onPressed: () {
+              var now = DateTime.now();
+              print([now.day, now.month, now.year].join("/"));
+            }, text: "Save Scorecard")),
         ])));
   }
 }
