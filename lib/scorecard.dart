@@ -14,7 +14,6 @@ class Scorecard extends StatefulWidget {
 
 class _ScorecardState extends State<Scorecard> {
 
-
   final _formGlobalKey = GlobalKey<FormState>();
 
   int playerCount = 1;
