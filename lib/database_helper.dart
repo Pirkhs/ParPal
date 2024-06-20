@@ -28,6 +28,7 @@ class DatabaseHelper {
       scores TEXT,
       players TEXT,
       user_id INTEGER,
+      FOREIGN KEY(user_id) REFERENCES user(id)
     )
     ''');
 
@@ -35,7 +36,7 @@ class DatabaseHelper {
     CREATE TABLE users(
       id INTEGER PRIMARY KEY,
       username TEXT,
-      
+      password TEXT,
     )
     ''');
   }

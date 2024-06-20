@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parpal/database_helper.dart';
 import 'package:parpal/login.dart';
 import 'package:parpal/styled_btn.dart';
 
@@ -105,11 +106,15 @@ class _SignUpState extends State<SignUp> {
                               return;
                             }
                           
-                              Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Login()),
-                              );
+                            () async {
+                              await DatabaseHelper.instance.add();
+                            };
+
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()),
+                            );
                           }
                         }, text: "Sign Up"),
 
