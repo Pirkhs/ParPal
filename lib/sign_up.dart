@@ -107,7 +107,7 @@ class _SignUpState extends State<SignUp> {
                             }
                           
                             () async {
-                              await DatabaseHelper.instance.add();
+                              // await DatabaseHelper.instance.add();
                             };
 
                             Navigator.push(
