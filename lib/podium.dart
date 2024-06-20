@@ -110,7 +110,7 @@ class Podium extends StatelessWidget {
           child: BottomAppBar(
               color: Colors.transparent,
               elevation: 0,
-              child: StyledButton(onPressed: () {Navigator.popUntil(context, ModalRoute.withName('/'));}, text: "Return Home")
+              child: StyledButton(onPressed: () {Navigator.of(context)..pop()..pop();}, text: "Return Home")
             ),
         ),
         body: Center(

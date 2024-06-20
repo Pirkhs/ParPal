@@ -5,12 +5,17 @@ import 'package:parpal/styled_btn.dart';
 
 var appBarTitleDecoration = RichText(
     text: const TextSpan(
-      style: TextStyle(fontSize: 40),
-      children: [
-        TextSpan(text: "Par", style: TextStyle(color: Colors.green)),
-        TextSpan(text: "Pal ", style: TextStyle(color: Colors.black)),
-        WidgetSpan( child: Icon(Icons.golf_course, size: 50, semanticLabel: "Black golf course icon",)),
-      ],
+  style: TextStyle(fontSize: 40),
+  children: [
+    TextSpan(text: "Par", style: TextStyle(color: Colors.green)),
+    TextSpan(text: "Pal ", style: TextStyle(color: Colors.black)),
+    WidgetSpan(
+        child: Icon(
+      Icons.golf_course,
+      size: 50,
+      semanticLabel: "Black golf course icon",
+    )),
+  ],
 ));
 
 class Home extends StatelessWidget {
@@ -38,20 +43,18 @@ class Home extends StatelessWidget {
                               builder: (context) => const Scorecard()),
                         );
                       },
-                      text: "Start New Game"
-                  )
-              ),
+                      text: "Start New Game")),
               Container(
-                margin: const EdgeInsets.all(10),
-                child: StyledButton(onPressed: () {
-                  Navigator.push(
+                  margin: const EdgeInsets.all(10),
+                  child: StyledButton(
+                      onPressed: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const SavedScorecards()),
                         );
-                }, text: "View Saved Scorecards")
-              )
+                      },
+                      text: "View Saved Scorecards"))
             ])));
   }
 }
-

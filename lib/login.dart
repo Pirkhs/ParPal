@@ -81,6 +81,8 @@ class _LoginState extends State<Login> {
                             
                             // if (usernameInput and passwordInput match) {
 
+                              _loginFormGlobalKey.currentState!.reset();
+
                               Navigator.push(
                               context,
                               MaterialPageRoute(
