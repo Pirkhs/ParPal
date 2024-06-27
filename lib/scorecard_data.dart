@@ -7,13 +7,21 @@ class ScorecardData {
 
   ScorecardData({required this.id, required this.date, required this.players, required this.scores, required this.userId});
 
+  factory ScorecardData.fromMap(Map<String, dynamic> json) => ScorecardData(
+    id: json["id"], 
+    date: json["date"], 
+    players: json["players"], 
+    scores: json["scores"], 
+    userId: json["userId"]
+  );
+
   Map<String, Object?> toMap() {
     return {
       'id': id,
       'date': date,
       'players': players,
       'scores': scores,
-      'user_id': userId
+      'userId': userId
     };
   }
 }

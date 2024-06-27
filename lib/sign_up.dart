@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parpal/database_helper.dart';
+// import 'package:parpal/database_helper.dart';
 import 'package:parpal/login.dart';
 import 'package:parpal/styled_btn.dart';
 
