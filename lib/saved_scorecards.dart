@@ -15,8 +15,11 @@ class SavedScorecards extends StatelessWidget {
         child: FutureBuilder<List<ScorecardData>>(
           future: DatabaseHelper.instance.getScorecards(),
           builder: (BuildContext context, AsyncSnapshot<List<ScorecardData>> snapshot) {
+            print(snapshot);
             if (!snapshot.hasData) { return const Center(child: Text("Loading...")); }
-            return const Text("Scorecards");
+            return snapshot.data!.isEmpty
+              ? const Center(child: Text("No Saved Scorecards"))
+              : const Text("Scorecards");
           }
         ),
       )
